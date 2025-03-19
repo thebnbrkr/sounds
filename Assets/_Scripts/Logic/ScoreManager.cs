@@ -20,4 +20,4 @@ public class ScoreManager : SingletonMonoBehavior<ScoreManager>
         currentScore = 0;
         OnScoreChanged?.Invoke(currentScore);
     }
-} 
+}
