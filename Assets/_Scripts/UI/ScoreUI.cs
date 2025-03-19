@@ -29,6 +29,9 @@ public class ScoreUI : MonoBehaviour
 
         // Subscribe to the score change event
         ScoreManager.Instance.OnScoreChanged += UpdateScore;
+
+        // Load the score when the scene is loaded
+        ScoreManager.Instance.LoadScore();
     }
 
     private void OnDestroy()
@@ -50,11 +53,11 @@ public class ScoreUI : MonoBehaviour
         scoreTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
 
         // After the animation is done, reset the position and swap the text
-        StartCoroutine(ResetCoinContainer(score));
+        StartCoroutine(ResetScoreContainer(score));
     }
 
     // Coroutine to reset the container and swap the text after the animation finishes
-    private IEnumerator ResetCoinContainer(int score)
+    private IEnumerator ResetScoreContainer(int score)
     {
         // Wait for the duration of the animation
         yield return new WaitForSeconds(duration);
