@@ -38,30 +38,30 @@ public class LivesManager : MonoBehaviour
     public void LoseLife()
     {
         lives--;
-
+    
         if (heartIcons.Count > 0)
         {
             GameObject heartToRemove = heartIcons[heartIcons.Count - 1];
-            heartIcons.RemoveAt(heartIcons.Count - 1);
+    heartIcons.RemoveAt(heartIcons.Count - 1);
             Destroy(heartToRemove);
-        }
+}
 
-        if (lives <= 0)
-        {
-            StartCoroutine(GameOverRoutine());
-        }
+if (lives <= 0)
+{
+    StartCoroutine(GameOverRoutine());
+}
     }
 
     IEnumerator GameOverRoutine()
-    {
-        Time.timeScale = 0;
+{
+    Time.timeScale = 0;
 
-        gameOverPanel.SetActive(true);
- 
-        yield return new WaitForSecondsRealtime(1.5f);
+    gameOverPanel.SetActive(true);
 
-        Time.timeScale = 1;
+    yield return new WaitForSecondsRealtime(1.5f);
 
-        SceneHandler.Instance.LoadMenuScene();
-    }
+    Time.timeScale = 1;
+
+    SceneHandler.Instance.LoadMenuScene();
+}
 }
