@@ -12,6 +12,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     private void OnEnable()
     {
+        if (ScoreManager.Instance == null)
+        {
+            // Debug.Log("Initializing ScoreManager manually...");
+            GameObject scoreManagerObject = new GameObject("ScoreManager");
+            scoreManagerObject.AddComponent<ScoreManager>();
+        }
         InputHandler.Instance.OnFire.AddListener(FireBall);
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
